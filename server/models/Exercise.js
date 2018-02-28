@@ -8,7 +8,7 @@ const exerciseSchema = new Schema(
     muscle: String,
     image: String,
     material: {
-        enum: ["Cuerda", "Mancuernas", "Goma", "Esterilla", "Balón" "Medicinal", "Fitball"]
+        enum: ["Cuerda", "Mancuernas", "Goma", "Esterilla", "Balón", "Medicinal", "Fitball"]
     }
   },
   {

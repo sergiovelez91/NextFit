@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const Rutine = require("../models/Rutine");
 const { dbUrl } = require("../config");
 const User = require("../models/User");
+const Exercise = require("../models/Exercise");
+const Training = require("../models/Training");
 
 mongoose.connect("mongodb://localhost/NextFit");
 
@@ -47,9 +49,12 @@ Exercise.create(exercise, (err, exerciseCreated) => {
   if (err) {
     throw err;
   }
-  exerciseCreated.forEach(u => {
-    console.log(`exercise added ${u.exercise}`);
-  });
-  -//cierra la conexion
-  mongoose.connection.close();
+  exerciseCreated.forEach((u) => {
+    console.log(`exercise added ${u}`);
+    Training.update(
+      { "_id" : "5a96c4cb131a3c42968d92fe" }, 
+      {$push: {"exercise" : u._id }},{new : true})
+      .then(u => console.log("LAAAAA", u));
+  //mongoose.connection.close();
+});
 });

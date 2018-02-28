@@ -6,7 +6,6 @@ const User = require('../models/User');
 const rutineSchema = new Schema(
   { name: String,
     traning: [{type:Schema.Types.ObjectId,ref:"Training"}],
-    owner_id: {type: Schema.Types.ObjectId,ref:"User"},
   },
   {
     timestamps: {
