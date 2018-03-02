@@ -3,28 +3,24 @@ const router = express.Router();
 const User = require('../models/User');
 //CREATE
 
-router.post("/new", (req, res, next) =>{
-    const {name, username, password, rutine, eventOwner, eventGuess} = req.body;
-    const user = new User({ rname, username, password, rutine, eventOwner, eventGuess});
-    user.save()
-      .then(savedUser => {res.status(200).json(savedUser)})
-      .catch(err => res.status(500).json(err));
-  });
+
   
   
   //UPDATE
   
   router.put("/edit/:id", (req,res,next) => {
-      const {name, username, password, rutine, eventOwner, eventGuess} = req.body;
-      User.updateOne({_id:req.params.id})
-      .then(updateOneUser => {res.status(200).json(updateOneUser)})
-      .catch(err => res.status(500).json(err))
-  });
+    const {name, username, password, rutine, eventOwner, eventGuess} = req.body;
+    User.findByIdAndUpdate(req.params.id,{name, username, password, rutine, eventOwner, eventGuess},{new:true })
+    //Esto necesita: id,{objeto que tiene las actualizaciones}, {opciones}
+    .then(updateOneUser => {res.status(200).json(updateOneUser)})
+    .catch(err => res.status(500).json(err))
+});
   
   //RETRIEVE
   
   router.get("/", (req, res, next) => {
       User.find()
+      //.populate("campoqueuqieropopular")
       .then(findUser => {res.status(200).json(findUser)})
       .catch(err => res.status(500).json(err))
   });

@@ -17,7 +17,9 @@ router.post("/new", (req, res, next) => {
 
 router.put("/edit/:id", (req,res,next) => {
     const {name, training} = req.body;
-    Rutine.updateOne({_id:req.params.id})
+    console.log(req.body)
+    
+    Rutine.findByIdAndUpdate(req.params.id,{name, training},{new:true })
     .then(updateOneRutine => {res.status(200).json(updateOneRutine)})
     // .then(updateOneRutine => {console.log(updateOneRutine)})
     .catch(err => res.status(500).json(err))

@@ -14,13 +14,12 @@ router.post("/new", (req, res, next) =>{
   
   
   //UPDATE
-  
   router.put("/edit/:id", (req,res,next) => {
-      const {name, description, muscle,image,material} = req.body;
-      Exercise.updateOne({_id:req.params.id})
-      .then(updateOneExercise => {res.status(200).json(updateOneExercise)})
-      .catch(err => res.status(500).json(err))
-  });
+    const {name, description, muscle,image,material} = req.body;
+    Exercise.findByIdAndUpdate(req.params.id,{name, description, muscle,image,material},{new:true })
+    .then(updateOneExercise => {res.status(200).json(updateOneExercise)})
+    .catch(err => res.status(500).json(err))
+});
   
   //RETRIEVE
   

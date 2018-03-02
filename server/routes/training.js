@@ -7,8 +7,7 @@ const Training = require("../models/Training");
 router.post("/new", (req, res, next) => {
   const { repetition, weight, series, exercise } = req.body;
   const training = new Training({ repetition, weight, series, exercise });
-  training
-    .save()
+  training.save()
     .then(savedTraining => {
       res.status(200).json(savedTraining);
     })
@@ -17,13 +16,12 @@ router.post("/new", (req, res, next) => {
 
 //UPDATE
 
-router.put("/edit/:id", (req, res, next) => {
-  const { repetition, weight, series, exercise } = req.body;
-  Training.find({ _id: req.params.id })
-    .then(updateOneTraining => {
-      res.status(200).json(updateOneTraining);
-    })
-    .catch(err => res.status(500).json(err));
+router.put("/edit/:id", (req,res,next) => {
+    const { repetition, weight, series, exercise } = req.body;
+    Training.findByIdAndUpdate(req.params.id,{ repetition, weight, series, exercise },{new:true })
+    //Esto necesita: id,{objeto que tiene las actualizaciones}, {opciones}
+    .then(updateOneTraining => {res.status(200).json(updateOneTraining)})
+    .catch(err => res.status(500).json(err))
 });
 
 //RETRIEVE
