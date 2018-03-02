@@ -10,7 +10,10 @@ const mongoose = require('mongoose');
 const {dbURL} = require('./config');
 const cors = require('cors');
 const auth = require('./routes/auth');
-
+const rutine = require('./routes/rutine');
+const training = require('./routes/training');
+const exercise = require('./routes/exercise');
+const user = require('./routes/user');
 const app = express();
 
 mongoose.connect(dbURL)
@@ -52,7 +55,12 @@ app.use(session({
 
 require('./passport')(app)
 
-app.use('/api/auth', auth);
+app.use('/auth', auth);
+app.use('/rutine', rutine);
+app.use('/training', training);
+app.use('/exercise', exercise);
+app.use('/user', user);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

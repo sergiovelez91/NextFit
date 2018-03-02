@@ -1,0 +1,60 @@
+const express = require("express");
+const router = express.Router();
+const Training = require("../models/Training");
+
+//CREATE
+
+router.post("/new", (req, res, next) => {
+  const { repetition, weight, series, exercise } = req.body;
+  const training = new Training({ repetition, weight, series, exercise });
+  training
+    .save()
+    .then(savedTraining => {
+      res.status(200).json(savedTraining);
+    })
+    .catch(err => res.status(500).json(err));
+});
+
+//UPDATE
+
+router.put("/edit/:id", (req, res, next) => {
+  const { repetition, weight, series, exercise } = req.body;
+  Training.find({ _id: req.params.id })
+    .then(updateOneTraining => {
+      res.status(200).json(updateOneTraining);
+    })
+    .catch(err => res.status(500).json(err));
+});
+
+//RETRIEVE
+
+router.get("/", (req, res, next) => {
+  Training.find()
+    .then(findTraining => {
+      res.status(200).json(findTraining);
+    })
+    .catch(err => res.status(500).json(err));
+});
+
+router.get("/:id", (req, res, next) => {
+  console.log("TRAINING");
+  const parametro = req.params.id;
+  Training.findById({ _id: parametro })
+    .then(findOneTraining => {
+      res.status(200).json(findOneTraining);
+    })
+    .catch(err => res.status(500).json(err));
+});
+
+//DELETE
+
+router.get("/delete/:id", (req, res, next) => {
+  const { repetition, weight, series, exercise } = req.body;
+  Training.deleteOne({ _id: req.params.id })
+    .then(deleteTraining => {
+      console.log(deleteOneTraining);
+    })
+    .catch(err => res.status(500).json(err));
+});
+
+module.exports = router;
