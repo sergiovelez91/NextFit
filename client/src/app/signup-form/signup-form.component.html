@@ -7,7 +7,7 @@
     <label> Password </label>
     <input type="password" [(ngModel)]="password" name="password"/>
     <div>
-      <button [routerLink]= "['profile']" (click)="login()"> Login </button>
+      <button (click)="signup()"> Sign Up </button>
     </div>
   </form>
   <p *ngIf="error" class="error"> {{ error }} </p>
@@ -17,4 +17,3 @@
   <pre> {{ session.getUser() | json }} </pre>
   <button (click)="logout()"> Logout </button>
 </div>
-
