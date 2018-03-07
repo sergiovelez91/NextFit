@@ -7,7 +7,7 @@ const trainingSchema = new Schema({
   repetition: Number,
   weight: Number,
   series: [],
-  exercise : [{type:Schema.Types.ObjectId,ref:"Exercise"}],
+  exercise: [{type:Schema.Types.ObjectId,ref:"Exercise"}],
   
 });
 

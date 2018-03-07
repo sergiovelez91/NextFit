@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/catch";
-import { Observable } from "rxjs/Rx";
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs/Rx';
 
 interface User {
   username: string;
@@ -11,7 +11,7 @@ interface User {
 
 @Injectable()
 export class SessionService {
-  BASEURL: string = "http://localhost:3000";
+  BASEURL: any = 'http://localhost:3000';
   options: object = { withCredentials: true };
   constructor(private http: Http) {
     this.isLoggedIn().subscribe();
@@ -64,7 +64,7 @@ export class SessionService {
       .catch(this.handleError);
   }
 
-  logout(): Observable<any> {
+  logout(): Observable<any> {console.log('ENTRO EN EL LOGOUT');
     return this.http
       .get(`${this.BASEURL}/auth/logout`, this.options)
       .map(res => res.json())

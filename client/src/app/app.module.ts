@@ -1,19 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { SessionService } from '../services/session.service';
+
+// COMPONENTES
+import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
+import { ExerciseComponent } from './exercise/exercise.component';
 import { RutineComponent } from './rutine/rutine.component';
 import { TrainingComponent } from './training/training.component';
-import { ExerciseComponent } from './exercise/exercise.component';
-import { routing } from './routing';
-import { SignupFormComponent } from './signup-form/signup-form.component';
-import { HomeComponent } from './home/home.component';
-import { RouterModule } from '@angular/router';
-import { ProfileComponent } from './profile/profile.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { AppComponent } from './app.component';
+import { NewRutineComponent } from './new-rutine/new-rutine.component';
 
+// SERVICIOS
+import { ExerciseService } from '../services/exercise.service';
+import { SessionService } from '../services/session.service';
+import { RutineService } from '../services/rutine.service';
+import { TrainingService } from '../services/training.service';
+
+// RUTAS
+import { RouterModule } from '@angular/router';
+
+import { routing } from './routing';
 
 
 @NgModule({
@@ -25,7 +35,8 @@ import { ProfileComponent } from './profile/profile.component';
     ExerciseComponent,
     SignupFormComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    NewRutineComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +44,7 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     RouterModule.forRoot(routing)
   ],
-  providers: [SessionService],
+  providers: [SessionService, RutineService, ExerciseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

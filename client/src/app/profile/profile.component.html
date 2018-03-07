@@ -1,3 +1,16 @@
-<p>
-  profile works!
-</p>
+<h2>
+  ¿Preparado para entrenar?
+</h2>
+
+<br>
+<div>
+{{user.name}} 
+<br>
+{{user.username}} 
+<br>
+{{user.rutine}}
+</div>
+
+<div *ngFor="let rutine of rutinas">{{rutinas.name}}> </div>
+
+  <button [routerLink]="['/rutine']" class="btn btn-success">Crea tu rutina</button>

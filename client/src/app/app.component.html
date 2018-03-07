@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
   <link rel="stylesheet" href="/stylesheets/style.css">
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -28,30 +28,65 @@
         </button>
 
 
-        <a class="navbar-brand" href="/">
-        <img src="../images/logo.png" height="100%"/>
+        <a class="navbar-brand" href="">
+          <!-- <img src="./images/logo.jpg" height="100%"> -->
+          <img class="img-responsive" src="../../src/assets/logo.png">
         </a>
         <a class="navbar-brand" href="/">NextFit
         </a>
       </div>
 
-
-
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active">
-            <a href="login">Accede
-                
-              <span class="sr-only">(current)</span>
+
+
+          <li  *ngIf="!session.user">
+            <a [routerLink]="['login']">Accede
+                <span class="visible-xs">Logout</span>
+              </a>
+          </li>
+
+
+
+          <li *ngIf="!session.user" >
+            <a [routerLink]="['signup']">Prueba Ahora</a>
+
+          </li>
+
+
+
+          <li *ngIf="session.user">
+            <a [routerLink]="['profile']">
+              <span class="hidden-xs glyphicon glyphicon-user">    Mi Perfil</span>
+              <span class="visible-xs">Logout</span>
             </a>
           </li>
-          <li>
-            <a href="signup">Prueba Ahora</a>
+
+          <li *ngIf="session.user">
+              <a [routerLink]="['/rutine']">
+                <span class="hidden-xs"> Mis Rutinas</span>
+                <span class="visible-xs">Logout</span>
+              </a>
+            </li>
+            
+            
+
+
+          <li *ngIf="session.user">
+            <a [routerLink]="['home']" (click)="logout()">
+              <span class="hidden-xs glyphicon glyphicon-remove">   Logout</span>
+              <span class="visible-xs">Logout</span>
+
+            </a>
           </li>
-            </ul>
-        </div>
+
+          
+
+
+
+        </ul>
+      </div>
       <!-- /.navbar-collapse -->
     </div>
     <!-- /.container-fluid -->

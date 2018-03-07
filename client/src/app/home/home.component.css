@@ -1,0 +1,25 @@
+.img-home{
+     background-size:100% 100%;
+     text-align: center
+}
+
+.contenedor {
+	margin: auto;
+	display: table;
+}
+
+h1 { 
+	
+	float: left;
+	color: black;
+    font-size: 2.5em;
+    animation: escribir 2s steps(900) infinite alternate; 
+    position:absolute;
+    right:0;
+    width:0;
+}
+
+@keyframes escribir {
+    from { width: 65% }
+    to { width:55% }
+}
