@@ -1,25 +1,35 @@
-.img-home{
-     background-size:100% 100%;
-     text-align: center
+.home {
+    display: block;
+    margin: auto;
+    size: 100%;
 }
 
+body { 
+	font-family: monospace;
+}
 .contenedor {
 	margin: auto;
 	display: table;
 }
 
 h1 { 
-	
+	position: relative; 
 	float: left;
+	background: white;
 	color: black;
-    font-size: 2.5em;
-    animation: escribir 2s steps(900) infinite alternate; 
+	font-size: 5 em;
+}
+
+h1 span {
     position:absolute;
     right:0;
     width:0;
+    background: white;
+    border-left: 1px solid #000;
+    animation: escribir 4s steps(18) infinite alternate;
 }
 
 @keyframes escribir {
-    from { width: 65% }
-    to { width:55% }
+    from { width: 100% }
+    to { width:0 }
 }

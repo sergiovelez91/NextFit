@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();                        
 const User = require('../models/User');
+const Training = require('../models/Training');
+const Exercise = require('../models/Exercise');
+const mongoose = require('mongoose');
+
 //CREATE
 
 
-  
-  
   //UPDATE
   
   router.put("/edit/:id", (req,res,next) => {
@@ -17,10 +19,9 @@ const User = require('../models/User');
 });
   
   //RETRIEVE
-  
+
   router.get("/", (req, res, next) => {
       User.find()
-      //.populate("campoqueuqieropopular")
       .then(findUser => {res.status(200).json(findUser)})
       .catch(err => res.status(500).json(err))
   });
@@ -29,6 +30,16 @@ const User = require('../models/User');
       console.log("User")
       const parametro = req.params.id;
       User.findById({_id:parametro})
+      .populate({
+        path: 'rutine', 
+            populate: { path: 'training'
+            , model: 'Training'
+            ,populate: { 
+                path: 'exercise'
+                , model: 'Exercise'
+            }
+        }
+    })
       .then(findOneUser => {res.status(200).json(findOneUser)})
       .catch(err=> res.status(500).json(err))
   });

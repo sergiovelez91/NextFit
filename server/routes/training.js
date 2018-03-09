@@ -5,8 +5,15 @@ const Training = require("../models/Training");
 //CREATE
 
 router.post("/new", (req, res, next) => {
-  const { repetition, weight, series, exercise } = req.body;
-  const training = new Training({ repetition, weight, series, exercise });
+  console.log(req.body)
+  const training = new Training({
+    repetition: req.body.repetition,
+    weight: req.body.weight,
+    series: req.body.series,
+    exercise: req.body.exercise,
+    
+  });
+  console.log(training)
   training.save()
     .then(savedTraining => {
       res.status(200).json(savedTraining);
@@ -31,7 +38,7 @@ router.get("/", (req, res, next) => {
     .then(findTraining => {
       res.status(200).json(findTraining);
     })
-    .catch(err => res.status(500).json(err));
+    .catch(err => res.status(500).json(err));Loading
 });
 
 router.get("/:id", (req, res, next) => {

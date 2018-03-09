@@ -32,8 +32,12 @@ router.post("/new", (req, res, next) =>{
   router.get("/:id", (req, res, next) => {
       console.log("Exercise")
       const parametro = req.params.id;
-      Exercise.findById({_id:parametro})
-      .then(findOneExercise => {res.status(200).json(findOneExercise)})
+      console.log(parametro)
+      Exercise.findById(parametro)
+      .then(findOneExercise => {
+          console.log(findOneExercise)
+          res.status(200).json(findOneExercise)
+        })
       .catch(err=> res.status(500).json(err))
   });
   

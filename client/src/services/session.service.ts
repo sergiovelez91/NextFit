@@ -79,4 +79,11 @@ export class SessionService {
       .map(this.configureUser(true))
       .catch(this.handleError);
   }
+
+  getPopulate(id): Observable<any> {
+    return this.http
+      .get(`${this.BASEURL}/user/${id._id}`, this.options)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 }

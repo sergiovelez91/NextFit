@@ -22,7 +22,6 @@ import { TrainingService } from '../services/training.service';
 
 // RUTAS
 import { RouterModule } from '@angular/router';
-
 import { routing } from './routing';
 
 
@@ -44,7 +43,7 @@ import { routing } from './routing';
     FormsModule,
     RouterModule.forRoot(routing)
   ],
-  providers: [SessionService, RutineService, ExerciseService],
+  providers: [SessionService, RutineService, ExerciseService, TrainingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

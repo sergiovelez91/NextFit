@@ -1,16 +1,30 @@
 <h2>
   ¿Preparado para entrenar?
 </h2>
+<br>
+<br>
+<div class="text-center paco" *ngIf=userPopulate>
+  NAME: {{userPopulate.name}}
+  <br>
+  <br>
 
-<br>
-<div>
-{{user.name}} 
-<br>
-{{user.username}} 
-<br>
-{{user.rutine}}
+
+  <div  class="rutinas" *ngFor=" let r of rutinas">
+
+    <strong>RUTINA: {{r.name}} {{r.weight}}</strong> 
+    <br>
+    <hr class="pp">
+    <div *ngFor='let a of r.training'>
+        <p>Nombre: {{ a.exercise}}</p>
+      <p>repeticiones: {{ a.repetition }}</p>
+      <p>peso: {{ a.weight }}</p>
+      <p> series: {{ a.series }}</p>
+
+    </div>
+  </div>
 </div>
 
-<div *ngFor="let rutine of rutinas">{{rutinas.name}}> </div>
 
-  <button [routerLink]="['/rutine']" class="btn btn-success">Crea tu rutina</button>
+
+
+<button [routerLink]="['/rutine']" class="btn btn-success">Crea tu rutina</button>

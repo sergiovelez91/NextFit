@@ -9,7 +9,7 @@ mongoose.connect("mongodb://localhost/NextFit");
 
 const users = [
   new User({
-    name: "Mortadelo",
+    name: "Pepe",
     username: "Pepe",
     password: bcrypt.hashSync("pepe", salt),
     rutine: [],

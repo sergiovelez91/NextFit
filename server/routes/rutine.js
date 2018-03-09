@@ -29,6 +29,7 @@ router.put("/edit/:id", (req,res,next) => {
 
 router.get("/", (req, res, next) => {
     Rutine.find()
+    .populate('training')
     .then(findRutine => {res.status(200).json(findRutine)})
     .catch(err => res.status(500).json(err))
 });

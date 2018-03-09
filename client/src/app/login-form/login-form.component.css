@@ -1,7 +1,57 @@
-.error{
-    background-color:red;
-    color: white;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
+.error {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.wrapper {
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
+/* .form-signin {
+  max-width: 900px;
+  padding: 30px 38px 66px;
+  margin: 0 auto;
+  background-color: #05d4d0;
+  border: 3px dotted rgba(0, 0, 0, 0.1);
+} */
+
+/* .form-signin-heading {
+  text-align: left;
+  margin-bottom: 30px;
+} */
+
+/* .form-control {
+  background: rgba(0, 0, 0, 0.5);
+  width: 300;
+  position: relative;
+  font-size: 18px;
+  color: rgb(201, 26, 26);
+  height: auto;
+  padding: 10px;
+} */
+
+/* input[type="text"] {
+  margin-bottom: 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+} */
+/* 
+input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+} */
+
+#img {
+ background: url("https://whatsupusana.com/wp-content/uploads/2014/03/Scientifically-Speaking-Workout.jpg ") center center no-repeat;
+ background-size: cover;
+ height: 100vh;
+
+}
+div#img form label{
+  color: aliceblue
 }

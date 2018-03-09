@@ -19,7 +19,7 @@ export class TrainingService {
 
   add(training) {
     return this.http.post(`${this.BASE_URL}/new`, training)
-      .map((res) => res.json());
+    .map((res) => res.json());
   }
 
   edit(id, training) {

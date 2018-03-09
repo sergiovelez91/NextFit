@@ -14,8 +14,7 @@ export class LoginFormComponent implements OnInit {
   error: string;
   constructor(public session: SessionService,private router:Router,public route:ActivatedRoute) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   login(){
     this.session.login(this.username,this.password)

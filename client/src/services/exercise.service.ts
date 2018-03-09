@@ -13,6 +13,7 @@ export class ExerciseService {
   }
 
   get(id) {
+    console.log(id);
     return this.http.get(`${this.BASE_URL}/${id}`)
       .map((res) => res.json());
   }
